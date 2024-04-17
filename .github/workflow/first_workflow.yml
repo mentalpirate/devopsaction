@@ -1,0 +1,26 @@
+name: my first workflow 
+on: push 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+    - name: run the echo command for testing
+      run: echo this workflow is working 
+
+    - name: testing the access
+      run: echo "this is working" >> working.txt
+    -name: uploading the artifact
+     uses: actions/upload-artifact@v4
+
+  test:
+    needs": jobs
+    runs-on: ubuntu-latest
+    steps:
+    - name: downloading the artifact
+      uses: actions/download-artifact@v4 
+    - name: testing the working 
+      run: cat working.txt
+    - name: printing the directory contents 
+      run: ls -la
+    
