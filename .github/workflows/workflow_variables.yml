@@ -1,0 +1,23 @@
+name: variables workflow
+on: push
+
+jobs:
+    test:
+      runs-on: ubuntu-latest
+      env:
+        STATUS: fine
+        PROCESS: completed 
+      steps:
+      - name: testing the variables in github workflows
+        run: echo This is working $STATUS
+    deploy: 
+      runs-on: ubuntu-latest
+      env: 
+        DEPLOYED: patr
+        ENVIROMENT: production
+        
+      steps: 
+      - name: Deploying the application 
+        run: echo this appication is hosted in $DEPLOYED ON $ENVIROMENT 
+      - name: Final output 
+        run: echo appication running finally
