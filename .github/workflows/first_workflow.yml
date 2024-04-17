@@ -13,7 +13,8 @@ jobs:
     - name: uploading the artifact
       uses: actions/upload-artifact@v4
       with:
-        name: file1
+        name: workfile
+        path: working.txt
 
   test:
     needs: build
@@ -21,6 +22,8 @@ jobs:
     steps:
     - name: downloading the artifact
       uses: actions/download-artifact@v4 
+      with: 
+        name: workfile
     - name: testing the working 
       run: cat working.txt
     - name: printing the directory contents 
